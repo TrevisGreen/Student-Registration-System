@@ -1,2 +1,24 @@
+import java.util.ArrayList;
+
 public class crsData implements java.io.Serializable {
+    public Object studentList;
+    public Object courseList;
+    public  static ArrayList<Student> students = new ArrayList<Student>();
+    public  static ArrayList<String> courses = new ArrayList<String>();
+
+    public void setStudentList(ArrayList<Student> students) {
+        crsData.students = students;
+    }
+
+    public void setCourseList(ArrayList<String> courses) {
+        crsData.courses = courses;
+    }
+
+    public static ArrayList<Student> getStudents() {
+        return students;
+    }
+
+    public static ArrayList<String> getCourses() {
+        return courses;
+    }
 }
