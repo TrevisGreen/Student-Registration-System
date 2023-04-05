@@ -1,6 +1,9 @@
 import javax.rmi.ssl.SslRMIClientSocketFactory;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
-public class Student {
+public class Student extends User implements StudentInterface, java.io.Serializable {
     public String firstName;
     public String lastName;
     public String userName;
@@ -54,5 +57,37 @@ public class Student {
 
     public String toString() {
         return this.firstName + " " + this.lastName;
+    }
+
+    // Student methods
+    public static void viewAllCourses() {
+        System.out.println(crsMain.courseArrayList);
+    }
+
+    public static String fullCourseId = null;
+    public static void viewNotFullCourses() throws IOException {
+        Course course = new Course();
+        for(int i = 0; i < crsMain.courseArrayList.size(); i++) {
+            course = crsMain.courseArrayList.get(i);
+            if(course.getEnrolledStudents() != course.getMaxStudents()) {
+                String courseId = course.getCourseId();
+                fullCourseId = courseId;
+                System.out.println(courseId);
+            }
+        }
+    }
+
+    public  static void register() {
+        Course course = new Course();
+        ArrayList<String> regCourse = new ArrayList<String>();
+        Scanner input = new Scanner(System.in);
+    }
+
+    public static void withdraw() {
+
+    }
+
+    public static void viewYourCourses() {
+        System.out.println(crsData.courses.toString());
     }
 }
