@@ -115,7 +115,7 @@ public class Course implements Serializable {
         this.students.add(name);
         this.enrolledStudents += 1;
     }
-    @Override
+
     public String toString() {
         return this.courseName + " " + this.courseId + " " + this.maxStudents + " " + this.enrolledStudents  + " " + this.students + " " + this.courseInstructor + " " + this.courseSection + " " + this.courseLocation;
     }
