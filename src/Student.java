@@ -111,7 +111,28 @@ public class Student extends User implements StudentInterface, java.io.Serializa
     }
 
     public static void withdraw() {
+        Course course = new Course();
+        Scanner input = new Scanner(System.in);
+        String courseId = input.nextLine();
+        System.out.print("Verify first name: ");
+        String firstName = input.nextLine();
+        System.out.print("Verify last name: ");
+        String lastName = input.nextLine();
+        String name = firstName + " " + lastName;
 
+        for(int i = 0; i < crsMain.courseArrayList.size(); i++) {
+            Student student = crsData.students.get(i);
+            if(student.getFirstName().equals(firstName) && student.getLastName().equals(lastName)) {
+                for(int j = 0; j < crsMain.courseArrayList.size(); j++) {
+                    course = crsMain.courseArrayList.get(j);
+                    if(courseId.equals(course.getCourseId())) {
+                        course.removeStudent(name);
+                    }
+                }
+            }
+            crsData.courses.remove(courseId);
+        }
+        System.out.println(crsData.courses.toString());
     }
 
     public static void viewYourCourses() {
