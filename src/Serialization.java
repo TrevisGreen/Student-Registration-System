@@ -42,4 +42,21 @@ public abstract class Serialization implements Serializable {
             System.out.println(studentList);
         }
     }
+
+    public static void courseSerialization() throws IOException {
+        ArrayList<Course> serializedCourse = crsMain.courseArrayList;
+
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream("CourseList.ser");
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+
+            objectOutputStream.writeObject(serializedCourse);
+            objectOutputStream.close();
+            fileOutputStream.close();
+            System.out.println("Course Serialization Complete");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
