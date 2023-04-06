@@ -59,4 +59,25 @@ public abstract class Serialization implements Serializable {
         }
     }
 
+    public static void courseDeserialization() {
+        ArrayList<Course> deserializedCourse = new ArrayList<Course>();
+
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream("CourseList.ser");
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+
+            deserializedCourse = (ArrayList<Course>)objectOutputStream.readObject();
+            objectOutputStream.close();
+            fileOutputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        } catch (ClassNotFoundException cnfe) {
+            cnfe.printStackTrace();
+            return;
+        }
+        for(Course courseList : deserializedCourse) {
+            System.out.println(courseList);
+        }
+    }
 }
