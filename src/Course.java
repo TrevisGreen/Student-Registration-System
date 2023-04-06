@@ -116,6 +116,11 @@ public class Course implements Serializable {
         this.enrolledStudents += 1;
     }
 
+    public void removeStudent(String name) {
+        this.students.remove(name);
+        this.enrolledStudents -= 1;
+    }
+
     public String toString() {
         return this.courseName + " " + this.courseId + " " + this.maxStudents + " " + this.enrolledStudents  + " " + this.students + " " + this.courseInstructor + " " + this.courseSection + " " + this.courseLocation;
     }
