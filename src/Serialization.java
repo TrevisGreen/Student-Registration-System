@@ -6,12 +6,12 @@ public abstract class Serialization implements Serializable {
         ArrayList<Student> serializedStudent = crsData.students;
 
         try {
-            FileOutputStream fileOutputStream = new FileOutputStream("StudentList.ser");
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(serializedStudent);
-            objectOutputStream.close();
-            fileOutputStream.close();
-            System.out.println("Student Serialization Complete");
+           FileOutputStream fileOutputStream = new FileOutputStream("StudentList.ser");
+           ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+           objectOutputStream.writeObject(serializedStudent);
+           objectOutputStream.close();
+           fileOutputStream.close();
+           System.out.println("Student Serialization Complete");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -22,7 +22,7 @@ public abstract class Serialization implements Serializable {
 
         try {
             // File input system receives bytes from a file
-            FileOutputStream fileOutputStream = new FileOutputStream("StudentList.ser");
+            FileInputStream fileOutputStream = new FileInputStream("StudentList.ser");
 
             // ObjectInputStream does the deserialization it reconstructs the data into an object
             ObjectInputStream objectInputStream = new ObjectInputStream(fileOutputStream);
@@ -63,12 +63,12 @@ public abstract class Serialization implements Serializable {
         ArrayList<Course> deserializedCourse = new ArrayList<Course>();
 
         try {
-            FileOutputStream fileOutputStream = new FileOutputStream("CourseList.ser");
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            FileInputStream fileInputStream = new FileInputStream("CourseList.ser");
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 
-            deserializedCourse = (ArrayList<Course>)objectOutputStream.readObject();
-            objectOutputStream.close();
-            fileOutputStream.close();
+            deserializedCourse = (ArrayList<Course>)objectInputStream.readObject();
+            objectInputStream.close();
+            objectInputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
             return;

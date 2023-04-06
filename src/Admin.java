@@ -39,6 +39,10 @@ public class Admin extends User implements AdminInterface, java.io.Serializable 
 
         System.out.print("Course Location: ");
         String courseLocation = input.nextLine();
+
+        Course newCourse = new Course(courseName, courseId, maxStudents, currentStudents, null, courseInstructor, sectionNumber, courseLocation);
+        crsMain.courseArrayList.add(newCourse);
+        return "Course added";
     }
 
     public static void deleteCourse() {
@@ -190,7 +194,7 @@ public class Admin extends User implements AdminInterface, java.io.Serializable 
         System.out.println("Enter student last name: ");
         String lastName = input.nextLine();
         String name = firstName = " " + lastName;
-        Student testStudent = new Student(firstName, lastName, null, null);
+        Student testStudent = new Student(firstName, lastName, null, null, null);
         System.out.println("Their registered courses: ");
 
         for(int i = 0; i < crsMain.courseArrayList.size(); i++) {

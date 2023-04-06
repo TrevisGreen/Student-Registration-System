@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Student extends User implements StudentInterface, java.io.Serializable {
+    public static ArrayList<String> registeredCourses = new ArrayList<String>();
     public String firstName;
     public String lastName;
     public String userName;
@@ -16,17 +17,27 @@ public class Student extends User implements StudentInterface, java.io.Serializa
 
     // Create a student object
     public static Student student = new Student();
-    public Student(String firstName, String lastName, String userName, String password) {
+    public Student(String firstName, String lastName, String userName, String password, ArrayList<String> courses) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
         this.password = password;
+        Student.registeredCourses = courses;
     }
 
+    public static ArrayList<String> getRegisteredCourses() {
+        return registeredCourses;
+    }
+
+    public static void setRegisteredCourses(ArrayList<String> registeredCourses) {
+        Student.registeredCourses = registeredCourses;
+    }
+
+    @Override
     public String getFirstName() {
         return firstName;
     }
-
+    @Override
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -92,8 +103,8 @@ public class Student extends User implements StudentInterface, java.io.Serializa
         String lastName = input.nextLine();
         String name = firstName + " " + lastName;
 
-        for(int i = 0; i < crsMain.courseArrayList.size(); i++) {
-            course = crsMain.courseArrayList.get(i);
+        for(int i = 0; i < crsData.students.size(); i++) {
+            Student student = crsData.students.get(i);
             if(student.getFirstName().equals(firstName) && student.getLastName().equals(lastName)) {
                 for(int j = 0; j < crsMain.courseArrayList.size(); j++) {
                     course = crsMain.courseArrayList.get(j);
@@ -120,7 +131,7 @@ public class Student extends User implements StudentInterface, java.io.Serializa
         String lastName = input.nextLine();
         String name = firstName + " " + lastName;
 
-        for(int i = 0; i < crsMain.courseArrayList.size(); i++) {
+        for(int i = 0; i < crsData.students.size(); i++) {
             Student student = crsData.students.get(i);
             if(student.getFirstName().equals(firstName) && student.getLastName().equals(lastName)) {
                 for(int j = 0; j < crsMain.courseArrayList.size(); j++) {
