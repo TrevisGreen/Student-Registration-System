@@ -95,8 +95,8 @@ public class Student extends User implements StudentInterface, java.io.Serializa
         for(int i = 0; i < crsMain.courseArrayList.size(); i++) {
             course = crsMain.courseArrayList.get(i);
             if(student.getFirstName().equals(firstName) && student.getLastName().equals(lastName)) {
-                for(int i = 0; i < crsMain.courseArrayList.size(); i++) {
-                    course = crsMain.courseArrayList.get(i);
+                for(int j = 0; j < crsMain.courseArrayList.size(); j++) {
+                    course = crsMain.courseArrayList.get(j);
                     if(courseId.equals(course.getCourseId())) {
                         course.addStudent(name);
                     }
