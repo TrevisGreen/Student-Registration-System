@@ -78,9 +78,36 @@ public class Student extends User implements StudentInterface, java.io.Serializa
     }
 
     public  static void register() {
+        // Add courseId to list of registered courses
         Course course = new Course();
         ArrayList<String> regCourse = new ArrayList<String>();
         Scanner input = new Scanner(System.in);
+        System.out.print("Enter course Id: ");
+        String courseId = input.nextLine();
+
+        // Add name to registered students
+        System.out.println("verify full name: ");
+        String firstName = input.nextLine();
+        System.out.println("Verify last name: ");
+        String lastName = input.nextLine();
+        String name = firstName + " " + lastName;
+
+        for(int i = 0; i < crsMain.courseArrayList.size(); i++) {
+            course = crsMain.courseArrayList.get(i);
+            if(student.getFirstName().equals(firstName) && student.getLastName().equals(lastName)) {
+                for(int i = 0; i < crsMain.courseArrayList.size(); i++) {
+                    course = crsMain.courseArrayList.get(i);
+                    if(courseId.equals(course.getCourseId())) {
+                        course.addStudent(name);
+                    }
+                    if(course.getEnrolledStudents() == course.getMaxStudents()) {
+                        System.out.println("Course is full.");
+                    }
+                }
+            }
+            crsData.courses.add(courseId);
+        }
+        System.out.println(crsData.courses);
     }
 
     public static void withdraw() {
